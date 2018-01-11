@@ -19,5 +19,3 @@ ReactDOM.render(
             return null;
         })}
     </ul>, document.getElementById('root'));
-
-
