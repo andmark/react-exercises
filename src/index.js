@@ -3,22 +3,26 @@ import ReactDOM from 'react-dom';
 
 import events from './data/events.json';
 
-ReactDOM.render(
+const getEvents = () => {
+return (
   <ul>
-    {events.map(item => {
-      const date = new Date(item.date);
+  {events.map(item => {
+    const date = new Date(item.date);
 
-      if (date >= Date.now()) {
-        return (
-          <li key={item.id}>
-            <strong>{item.name}</strong><br />
-            Gdzie: {item.place}<br />
-            Kiedy: {item.date} - {item.time}
-          </li>
-        );
-      }
+    if (date >= Date.now()) {
+      return (
+        <li key={item.id}>
+          <strong>{item.name}</strong><br />
+          Gdzie: {item.place}<br />
+          Dnia: {item.date}, Godzina: {item.time}
+        </li>
+      );
+    }
 
-      return null;
-    })}
-  </ul>
-  , document.getElementById('root'));
+    return null;
+  })}
+</ul>
+)
+}
+
+ReactDOM.render(getEvents(), document.getElementById('root'));
