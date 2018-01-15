@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Events = (props) => {
+class Events extends React.Component {
+    render() {
     return (
         <ul>
-            {props.happening.map(item => {
+            {this.props.happening.map(item => {
             const date = new Date(item.date);
         
             if (date >= Date.now()) {
@@ -19,6 +20,7 @@ const Events = (props) => {
             })}
         </ul>
       );
+    }
 };
 
 export default Events;
