@@ -1,14 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import events from './data/events.json';
 
 class Events extends React.Component {
-    static propTypes = {
-        happening: PropTypes.array.isRequired
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            happening: [] 
+        };
     };
+
+    componentDidMount() {
+        this.setState({  
+            happening: events 
+        });
+    }
+
     render() {
         return (
             <ul>
-                {this.props.happening.map(item => {
+                {this.state.happening.map(item => {
                     const date = new Date(item.date);
                     if (date >= Date.now()) {
                         return (
@@ -27,4 +38,3 @@ class Events extends React.Component {
 };
 
 export default Events;
-// export { Events };
